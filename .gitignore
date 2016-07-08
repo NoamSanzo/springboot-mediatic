@@ -54,3 +54,4 @@ test_output/
 nb-configuration.xml
 /src/main/resources/jasper/MyReports/*
 nbactions.xml
+/src/main/resources/application-dev.properties
