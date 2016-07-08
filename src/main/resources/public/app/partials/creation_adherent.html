@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script langage="JAVASCRIPT"></script>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nom</th>
+				<th>Pr&eacute;nom</th>
+				<th>Date de naissance</th>
+				<th>Age</th>
+				<th>E-mail</th>
+				<th>Adresse</th>
+				<th>Cotisation</th>
+				<th>Nombre de m&eacute;dias en sa possession</th>
+			
+
+			</tr>
+			<tr ng-repeat="adherent in adherents track by $index">
+						
+			
+				<td ng-bind="{{$index+4}}"></td>
+				<td ng-bind="adherent.nom"></td>
+				<td ng-bind="adherent.prenom"></td>
+				<td ng-bind="getDate_Naissance(adherent)"></td>
+				<td ng-bind="calculateAge(adherent)"></td>
+				<td ng-bind="adherent.email"></td>
+				<td ng-bind="adherent.ligne1"></td>
+				<td ng-bind="adherent.ligne2"></td>
+				<td ng-bind="adherent.codepostal"></td>
+				<td ng-bind="adherent.ville"></td>
+				<td ng-bind="getDebut(adherent)"></td>
+				<td ng-bind="calculateFin(adherent)"></td>
+				<td ng-bind="adherent.montant"></td>
+				
+			</tr>
+		</thead>
+
+	</table>
+
+		<form ng-submit="ajout()">
+			<input type="text" ng-model="toAdd.prenom" placeholder="Prenom" ng-required="true"/></br>
+			<input type="text" ng-model="toAdd.nom" placeholder="Nom" ng-required="true"/></br>
+			<input type="date" ng-model="toAdd.date_naissance" placeholder="Date de naissance en jj/MM/aaaa" ng-required="true"/>
+			<span>Date de naissance</span></br>
+			<input type="text" ng-model="toAdd.email" placeholder="xyz@example.com" ng-required="true"/></br>
+			<input type="text" ng-model="toAdd.adresse.ligne1" placeholder="Adresse" /></br>
+			<input type="text" ng-model="toAdd.adresse.ligne2" placeholder="Adresse" /></br>
+			<input type="number" ng-model="toAdd.adresse.codepostal" placeholder="Code postal" /></br>
+			<input type="text" ng-model="toAdd.adresse.ville" placeholder="Ville" /></br>
+			<input type="date" ng-model="toAdd.cotisation.debut" placeholder="Date de paiment" />
+			<span>Date de paiement cotisation</span></br>
+			<input type="number" ng-model="toAdd.cotisation.montant" placeholder="montant de la cotisation" />
+			
+	
+			<button type="submit" ng-required="true">Enregistrer</button>
+			
+			
+		</form>
+	
+	
+</head>
+
+<body>
+	<footer>
+		<form>
+ 		 <input type="button" value="Retour" ng-onclick="history.go(-1)">
+		</form>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<form>
+
+	<div class="row">
+		<fieldset class="form-group col-md-offset-1 col-md-4">
+			<label for="text">Titre</label> <input ng-model="mediaAChercher"
+				type="texte" class="form-control" id="mediaAChercher"
+				placeholder="Entrez M&eacute;dia">
+		</fieldset>
+	</div>
+	<div class="row">
+		<fieldset class="form-group col-md-offset-1 col-md-4">
+			<label for="text">Auteur</label> <input ng-model="auteurAChercher"
+				type="texte" class="form-control" id="auteurAChercher"
+				placeholder="Entrez Auteur">
+		</fieldset>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+			<select class="form-control" ng-model="typeAChercher"
+				ng-options="type.Name for type in types">
+				<option value="livre">Livre</option>
+				<option value="dvd">DVD</option>
+				<option value="cd">CD</option>
+				<br>
+			</select>
+		</div>
+	</div>
+	
+	<br>
+	<div class="row">
+		<button class="btn btn-primary col-md-offset-1"
+			ng-click="rechercher()">Rechercher</button>
+		<button class="btn btn-primary " ng-click="clearRecherche()">Clear</button>
+	</div>
+
+</form>
+<br>
+<input class="btn btn-primary col-md-offset-1" type="button"
+	value="Nouveau" ng-click="nouveauMedia()">
+
+<br>
+<div class="col-md-offset-1">
+<label class="radio-inline"> 
+	<input 
+		ng-model="triePar"
+		type="radio"
+		name="inlineRadioOptions"
+		id="inlineRadio1"
+		value="titre">
+	Titre
+</label>
+<label class="radio-inline"> 
+	<input 
+		ng-model="triePar" 
+		type="radio"
+		name="inlineRadioOptions" 
+		id="inlineRadio2" 
+		value="type"> 
+	Type
+</label>
+<label class="radio-inline"> 
+	<input 
+		ng-model="triePar" 
+		type="radio"
+		name="inlineRadioOptions" 
+		id="inlineRadio3" 
+		value="auteur"> 
+	Auteur
+</label>
+<label class="radio-inline"> 
+	<input 
+		ng-model="triePar" 
+		type="radio"
+		name="inlineRadioOptions" 
+		id="inlineRadio4" 
+		ng-value="getEmprunteurActuel"> 
+	Emprunte par
+</label>
+<label class="radio-inline"> 
+	<input
+		ng-model="triePar"
+		type="radio"
+		name="inlineRadioOptions" 
+		id="inlineRadio5"
+		ng-value="getDateRetour"> 
+	Date de retour
+</label>
+</div>
+
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Titre du m&eacute;dia</th>
+			<th>Type du m&eacute;dia</th>
+			<th>Auteur du m&eacute;dia</th>
+			<th>Emprunt&eacute; par qui ?</th>
+			<th>Date de retour pr&eacute;vu</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="media in ListMedia | filter:filtreMedia:strict | orderBy:triePar">
+			<td ng-bind="media.titre"></td>
+			<td ng-bind="media.type"></td>
+			<td ng-bind="media.auteur"></td>
+			<td ng-bind="getEmprunteurActuel(media)"></td>
+			<td ng-bind="getDateRetour(media)"></td>
+			<td>
+				<a href={{"#/details_media/"+media.id}}> 
+					<input type="button" value="Afficher D&eacute;tails" ng-click="" />
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

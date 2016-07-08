@@ -1,0 +1,99 @@
+
+<form>
+
+	<div class="row">
+		<fieldset class="form-group col-md-offset-1 col-md-4">
+			<label for="text">ID commençant par: </label> <input
+				ng-model="idAChercher" type="texte" class="form-control"
+				id="mediaAChercher" placeholder="Entrez ID">
+		</fieldset>
+	</div>
+	<div class="row">
+		<fieldset class="form-group col-md-offset-1 col-md-4">
+			<label for="text">Nom contenant: </label> <input
+				ng-model="nomAChercher" type="texte" class="form-control"
+				id="nomAChercher" placeholder="Entrez nom">
+		</fieldset>
+	</div>
+
+	<div class="row">
+		<button class="btn btn-primary col-md-offset-1"
+			ng-click="rechercher()">Rechercher</button>
+		<button class="btn btn-primary " ng-click="clearRecherche()">Clear</button>
+	</div>
+
+	<br> <input class="btn btn-primary col-md-offset-1" type="button"
+		value="Nouveau" ng-click="nouvelAdherent()">
+
+
+	<br><div><label class="col-md-offset-1" ></label> <i>Trier par :</div> <br></i>
+	<div class="col-md-offset-1">
+		<label class="radio-inline"> 
+		<input 
+			ng-model="triePar"
+			type="radio" 
+			name="inlineRadioOptions" 
+			id="identifiant"
+			value="id"> 
+			Identifiant
+		</label> 
+		<label class="radio-inline"> 
+		<input 
+			ng-model="triePar"
+			type="radio" 
+			name="inlineRadioOptions" 
+			id="nomPrenom"
+			ng-value="getNomPrenom"> 
+			Nom & pr&eacute;nom
+		</label> 
+		<label class="radio-inline"> 
+		<input 
+			ng-model="triePar"
+			type="radio" 
+			name="inlineRadioOptions" 
+			id="dateNaissance"
+			ng-value="getDateNaissance"> 
+			Date de naissance
+		</label>
+		<input
+			ng-model="triePar"
+			type="radio" 
+			name="inlineRadioOptions" 
+			id="dateRetour"
+			ng-value="EstAJourCotisation"> 
+			Est a jour cotisation ? 
+		</label> 
+		<label class="radio-inline"> 
+		<input 
+			ng-model="triePar"
+			type="radio" 
+			name="inlineRadioOptions" 
+			id="nbMediaEmprunte"
+			value="nombre_media"> 
+			Nombre de m&eacute;dias
+			emprunt&eacute;s
+		</label> 
+		
+		
+		<table class="table table-bordered table-hover">
+			<tr>
+				<th>Identifiant de l'adh&eacute;rent</th>
+				<th>Nom et pr&eacute;nom</th>
+				<th>Date de naissance</th>
+				<th>A jour de cotisation ?</th>
+				<th>Nombre de m&eacute;dias en sa possession</th>
+			</tr>
+			<tr
+				ng-repeat="adherent in ListAdherent | filter:filtreAdherent.nom | regex:'id':'^'+filtreAdherent.id | orderBy:triePar">
+
+				<td ng-bind="adherent.id"></td>
+				<td ng-bind="getNomPrenom(adherent)"></td>
+				<td ng-bind="getDateNaissance(adherent)"></td>
+				<td ng-bind="EstAJourCotisation(adherent)"></td>
+				<td ng-bind="adherent.nombre_media"></td>
+				<td><a href={{"#/details_adherent/"+adherent.id}}> <input
+						type="button" value="Voir d&eacute;tails" ng-click="" />
+				</a></td>
+			</tr>
+
+		</table>

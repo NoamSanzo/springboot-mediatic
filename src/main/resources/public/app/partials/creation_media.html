@@ -1,0 +1,59 @@
+<table class="table table-bordered table-hover ">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Titre du m&eacute;dia</th>
+			<th>Type du m&eacute;dia</th>
+			<th>Auteur du m&eacute;dia</th>
+		</tr>		
+	</thead>			
+	<tbody>
+		<tr ng-repeat="media in medias track by $index">
+			<td ng-bind="{{$index+62}}"></td>
+			<td ng-bind="media.titre"></td>
+			<td ng-bind="media.type"></td>
+			<td ng-bind="media.auteur"></td>
+		</tr>
+	</tbody>
+</table>
+<!-- 			<tr ng-repeat="media in medias  -->
+<!-- 						| filter:{titre:titreAChercher}" > -->
+<!-- 			<td><a href="#/media/{{media._idmedia.$oid}}">  -->
+<!-- 					ng-bind="media.titre"></span> -->
+<!-- 			</a></td> -->
+<!-- 			<td ng-bind="media.title"></td> -->
+<!-- 			<td ng-bind="media.type"></td> -->
+<!-- 			<td ng-bind="media.author"></td> -->
+<!-- 			<td ng-bind="empruntePar"></td> -->
+<!-- 			<td><input type="button" value="+" ng-click="ajout(media)" /></td> -->
+<!-- 			</tr> -->
+<!-- 		</thead> -->
+<form ng-submit="ajout()">
+	<div class="row">
+		<fieldset class="form-group col-md-offset-1 col-md-4">
+			<label for="text">Titre</label><br>
+			<input class="form-control" type="text" ng-model="toAdd.titre"
+				placeholder="Titre du m&eacute;dia" ng-required="true" />
+		</fieldset>
+	</div>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-1">
+			<select class="form-control" ng-model="toAdd.type" ng-required="true" ng-options="type for type in ['Livre', 'DVD', 'CD']">
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<fieldset class="form-group col-md-offset-1  col-md-4">
+			<label for="text">Auteur</label> <input ng-model="toAdd.auteur"
+				type="texte" class="form-control" id="auteur"
+				placeholder="Auteur du m&eacute;dia" ng-required="true">
+		</fieldset>
+	</div>
+	<!-- 		<input type="text" ng-model="toAdd.auteur" placeholder="Auteur du m&eacute;dia" ng-required="true"/><br /> -->
+	<button class="btn btn-primary col-md-offset-1" type="submit"
+		ng-required="true">Enregistrer</button>
+</form>
+<div>
+	<br>
+	<input class="btn btn-primary col-md-offset-1" type="button" value="Retour" onclick="history.go(-1)">
+</div>

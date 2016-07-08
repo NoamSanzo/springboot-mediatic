@@ -1,0 +1,59 @@
+<div>
+	<h1>D&eacutetails Adh&eacuterent</h1>
+	<div>
+		Adh&eacuterent n.<span ng-bind="adherent.id"></span>
+	</div>
+	<div>
+		<form ng-submit="modify()">
+			<div>
+				<input type="text" ng-model="adherent.nom" placeholder="Nom"/>
+				<input type="text" ng-model="adherent.prenom" placeholder="Pr&eacutenom"/>
+			</div>
+			<div>
+				<input type="text" ng-model="adherent.adresse.ligne1" placeholder="Adresse"/><br> <input
+					type="text" ng-model="adherent.adresse.ligne2" placeholder="Adresse suite"/><br> <input
+					type="text" ng-model="adherent.adresse.codepostal" placeholder="Code Postal"/> <input
+					type="text" ng-model="adherent.adresse.ville" placeholder="Ville"/><br>
+			</div>
+			<div>
+				<span ng-bind="getDateNaissance(adherent)"></span>
+			</div>
+			<div>
+				<input type="email" ng-model="adherent.email" placeholder="E-M@il"/>
+			</div>
+			<button type="submit">Enregistrer Modification</button>
+		</form>
+	</div>
+	
+	<div>
+		<h1>Ajouter un emprunt</h1>
+		<form ng-submit="addEmprunt()">
+			<select ng-model="med"
+					ng-options="media.titre for media in ListMedias"
+					placeholder="Titre du média"
+					ng-required="true">
+					<option value="" disabled selected>S&eacutelectionnez un m&eacutedia</option>
+			</select>
+			Date de D&eacutebut: <input type='date' ng-required="true" ng-model="dateDebut">
+			<button type="submit">Ajouter</button>
+		</form>
+	</div>
+	
+	<div>
+		<h1>M&eacutedias emprunt&eacutes :</h1>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Date Retour</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in adherent.emprunt" ng-click="goTo(item.media.id)"> 
+					<td ng-bind="item.media.titre"></td>
+					<td ng-bind="putDate(item.retour)"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

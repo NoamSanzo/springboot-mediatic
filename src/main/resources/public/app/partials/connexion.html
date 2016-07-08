@@ -1,0 +1,24 @@
+<div>
+	<h4>Se connecter</h4>
+	<form>
+
+		<div class="row">
+			<fieldset class="form-group col-md-offset-1 col-md-4">
+				<label for="UserName">Entrez votre login</label> <input
+					ng-model="username" type="texte" class="form-control" id="username"
+					placeholder="Entrez votre login">
+			</fieldset>
+		</div>
+		<div class="row">
+			<fieldset class="form-group col-md-offset-1 col-md-4">
+				<label for="password">Password</label> <input ng-model="password"
+					type="password" class="form-control" id="password"
+					placeholder="Entrez votre mot de passe">
+			</fieldset>
+		</div>
+		<div class="row">
+			<button class="col-md-offset-1 btn btn-primary" ng-click="login()" type="submit">Valider</button>
+		</div>
+	</form>
+
+</div>
