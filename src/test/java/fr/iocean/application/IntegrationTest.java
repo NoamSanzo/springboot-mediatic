@@ -1,10 +1,11 @@
 package fr.iocean.application;
 
-import javax.annotation.PostConstruct;
-
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,10 +28,13 @@ public class IntegrationTest {
 
     protected JsonHelper jsonHelper = new JsonHelper();
 
-    @PostConstruct
-    public void before() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .build();
+    @Before
+    @Test
+    public void initMockMcv() {
+        mockMvc = MockMvcBuilders
+        		.webAppContextSetup(webApplicationContext)
+        		.apply(SecurityMockMvcConfigurers.springSecurity())
+        		.build();
     }
 	
 }
