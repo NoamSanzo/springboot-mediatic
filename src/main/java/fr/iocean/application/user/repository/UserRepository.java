@@ -9,7 +9,7 @@ import fr.iocean.application.user.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query("select u from User u fetch u.authorizations where u.login = :login")
-	User findByLogin(@Param("login") String login);
+//	@Query("from User u left join fetch u.authorizations where u.login = :login")
+	User findByLogin(String login);
 	
 }

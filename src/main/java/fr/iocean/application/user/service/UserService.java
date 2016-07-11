@@ -3,6 +3,7 @@ package fr.iocean.application.user.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fr.iocean.application.user.User;
@@ -12,9 +13,13 @@ import fr.iocean.application.user.repository.UserRepository;
 public class UserService {
 	
 	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private UserRepository userRepository;
 	
 	public void create(User user) {
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 		
 	}

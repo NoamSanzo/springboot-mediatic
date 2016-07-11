@@ -22,6 +22,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 	@Autowired
 	AuthenticationService authenticationService;
 
+	@Autowired
+	HttpBasicEntryPoint httpBasicEntryPoint;  
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -35,19 +37,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	http
-	.sessionManagement()
-	.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-	.and()
-	.authorizeRequests()
-	.antMatchers("/api/public/**")
-	.permitAll()
-	.anyRequest()
-	.authenticated()
-	.and()
-	.httpBasic()
-	.and()
-	.csrf()
-	.disable();
+		http
+			.sessionManagement()
+			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			.and()
+			.authorizeRequests()
+			.antMatchers("/api/public/**", "/app/**")
+			.permitAll()
+		.anyRequest()
+		.authenticated()
+		.and()
+		.httpBasic()
+		.authenticationEntryPoint(httpBasicEntryPoint)
+		.and()
+		.csrf()
+		.disable();
 	}
 	}

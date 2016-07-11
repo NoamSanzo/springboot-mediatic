@@ -3,6 +3,7 @@ package fr.iocean.application.user;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class User implements IoEntity{
 	@NotBlank
 	private String name;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Authorization> authorizations;
 	
 	public String getLogin() {

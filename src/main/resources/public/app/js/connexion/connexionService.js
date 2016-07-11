@@ -20,10 +20,14 @@ angular.module('connexion')
 
     service.login = function (username, password) {
     	//var myUrl  = 'http://192.168.10.12:8090/resource/connexion.login';
-    	var myUrl = 'localhost:8080/api/user/connexion.login';
+    	var myUrl = 'api/user/authorities';
     	console.log('on tente de se connecter', username, password);
     	
-    	var promise = $http.post(myUrl, { login: username, mdp: password })
+    	var config = {headers: {
+    		'Authorization': 'Basic ' + btoa(username + ':' + password)
+    	}}
+    	
+    	var promise = $http.get(myUrl, config)
                .then(function(response) {
                		console.log(' success du post ' + response.data);
   					return response;

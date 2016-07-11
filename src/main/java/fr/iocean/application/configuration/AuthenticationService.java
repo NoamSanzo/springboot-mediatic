@@ -21,6 +21,14 @@ public class AuthenticationService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(final String username) {
 		User user = userRepository.findByLogin(username);

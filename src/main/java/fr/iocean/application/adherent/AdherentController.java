@@ -21,6 +21,14 @@ public class AdherentController {
 	@Autowired
 	private AdherentService adherentService;
 
+	public AdherentService getAdherentService() {
+		return adherentService;
+	}
+
+	public void setAdherentService(AdherentService adherentService) {
+		this.adherentService = adherentService;
+	}
+
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public Adherent findById(@PathVariable Long id) {
 		return adherentService.findById(id);
@@ -43,5 +51,7 @@ public class AdherentController {
 	public Adherent update(@RequestBody @Valid Adherent resource,@PathVariable Long id){
 		return adherentService.update(resource);
 	}
+	
+	
 
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class AdherentService {
 
 	@Autowired
-	AdherentRepository adherentRepo;
+	private AdherentRepository adherentRepo;
 	
 	public void create(Adherent adherent){
 		adherentRepo.save(adherent);
@@ -22,7 +22,14 @@ public class AdherentService {
 		
 	}
 	public List<Adherent> findAll() {
-	return adherentRepo.findAll();
+		return adherentRepo.findAll();
+	}
+	
+	public AdherentRepository getAdherentRepo() {
+		return adherentRepo;
+	}
+	public void setAdherentRepo(AdherentRepository adherentRepo) {
+		this.adherentRepo = adherentRepo;
 	}
 	
 }
