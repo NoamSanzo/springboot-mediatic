@@ -13,7 +13,7 @@ angular.module('connexion')
         		console.log( 'valeur renvoyée par la requete' + data);
         		connexionService.setCredentials($scope.username, $scope.password)
                 console.log(data);
-                if(data != null && data.message === "OK")
+                if(data != null && data.status == 200)
      			    $location.url('/recherche_media');
                 else
                     alert("mauvais mot de passe ou login");
