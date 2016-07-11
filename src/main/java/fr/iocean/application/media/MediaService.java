@@ -12,9 +12,13 @@ public class MediaService {
 	public void create(Media u){
 		mediaRepo.save(u);
 	}
+	
+	
 	public Media findOne(Long id){
 		return mediaRepo.findOne(id);
 	}
+	
+	
 	public Media update(Media resource){
 		if (mediaRepo.findOne(resource.getId()) != null) {
 			return mediaRepo.save(resource);

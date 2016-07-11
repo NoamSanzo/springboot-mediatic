@@ -1,6 +1,4 @@
-package fr.iocean.application.authorization;
-
-import javax.validation.Valid;
+package fr.iocean.application.media;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,22 +11,22 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/authorization")
-public class AuthorizationController {
+@RequestMapping("/resource/media.accession")
+public class MediaController {
 
 	@Autowired
-	private AuthorizationService authorService;
+	private MediaService mediaService;
 
-	
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Authorization findOne(@PathVariable Long id) {
-		return AuthorizationService.findOne(id);
+	public Media findOne(@PathVariable Long id) {
+		return mediaService.findOne(id);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public void create(@RequestBody @Valid Authorization resource) {
-		AuthorizationService.create(resource);
+	public void create(@RequestBody Media resource) {
+		mediaService.create(resource);
 	}
+	
 }
