@@ -19,7 +19,7 @@ import fr.iocean.application.helper.JsonHelper;
 @SpringApplicationConfiguration(classes = FilRougeApplication.class)
 @WebAppConfiguration
 @Transactional
-public class IntegrationTest {
+public abstract class IntegrationTest {
 	
 	@Autowired
     protected WebApplicationContext webApplicationContext;
@@ -29,7 +29,6 @@ public class IntegrationTest {
     protected JsonHelper jsonHelper = new JsonHelper();
 
     @Before
-    @Test
     public void initMockMcv() {
         mockMvc = MockMvcBuilders
         		.webAppContextSetup(webApplicationContext)

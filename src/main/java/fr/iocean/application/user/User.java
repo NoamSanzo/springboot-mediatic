@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 
 import fr.iocean.application.IoEntity;
+import fr.iocean.application.authorization.Authorization;
 
 @Entity
 @Table(name = "user_")
@@ -30,8 +32,8 @@ public class User implements IoEntity{
 	@NotBlank
 	private String name;
 	
-//	@ManyToMany
-//	private List<Authority> authorities;
+	@ManyToMany
+	private List<Authorization> authorizations;
 	
 	public String getLogin() {
 		return login;
@@ -64,14 +66,16 @@ public class User implements IoEntity{
 	public Long getId(){
 		return this.id;
 	}
+
+	public List<Authorization> getAuthorizations() {
+		return authorizations;
+	}
+
+	public void setAuthorizations(List<Authorization> authorizations) {
+		this.authorizations = authorizations;
+	}
+	
 }
-//	public List<Authority> getAuthorities() {
-//		return authorities;
-//	}
-//
-//	public void setAuthorities(List<Authority> authorities) {
-//		this.authorities = authorities;
-//	}
 
 
 

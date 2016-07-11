@@ -1,5 +1,7 @@
 package fr.iocean.application.media;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,18 +10,20 @@ public class MediaService {
 
 	@Autowired
 	MediaRepository mediaRepo;
-	
-	public void create(Media u){
+
+	public void create(Media u) {
 		mediaRepo.save(u);
 	}
-	
-	
-	public Media findOne(Long id){
+
+	public Media findOne(Long id) {
 		return mediaRepo.findOne(id);
 	}
-	
-	
-	public Media update(Media resource){
+
+	public List<Media> findAll() {
+		return mediaRepo.findAll();
+	}
+
+	public Media update(Media resource) {
 		if (mediaRepo.findOne(resource.getId()) != null) {
 			return mediaRepo.save(resource);
 		}

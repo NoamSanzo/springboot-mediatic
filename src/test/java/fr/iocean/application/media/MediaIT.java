@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fr.iocean.application;
+package fr.iocean.application.media;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -17,6 +17,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import fr.iocean.application.IntegrationTest;
 import fr.iocean.application.media.Media;
 import fr.iocean.application.media.MediaService;
 
@@ -27,15 +28,13 @@ public class MediaIT extends IntegrationTest{
 	
 	
 	@Test
-	@WithMockUser(authorities="Auth")
+	@WithMockUser(authorities="ADMIN")
 	public void testCreate() throws Exception{
 		Media media = new Media();
 		media.setTitre("titre");
 		media.setType("type");
 		media.setAuteur("auteur");
 	
-		
-		
 		this.mockMvc.perform(post("/api/media").contentType(MediaType.APPLICATION_JSON)
 				.content(jsonHelper.serialize(media)))
 				.andDo(MockMvcResultHandlers.print())
@@ -47,13 +46,12 @@ public class MediaIT extends IntegrationTest{
 		}
 		
 		@Test
-		public void testCreateR() throws Exception{
+		@WithMockUser
+		public void testCreateForbidden() throws Exception{
 			Media media = new Media();
 			media.setTitre("titre");
 			media.setType("type");
 			media.setAuteur("auteur");
-		
-
 
 		this.mockMvc.perform(post("/api/media").contentType(MediaType.APPLICATION_JSON)
 		.content(jsonHelper.serialize(media)))

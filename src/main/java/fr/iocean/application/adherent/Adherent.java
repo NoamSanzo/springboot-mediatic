@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
@@ -32,6 +35,7 @@ public class Adherent implements IoEntity{
 	private String prenom;
 	
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date date_naissance;
 	
 	@NotBlank
@@ -41,13 +45,13 @@ public class Adherent implements IoEntity{
 	private String adresse;
 	
 	@NotNull
+	@Valid
 	@Embedded
 	private Cotisation cotisation;
 	
-	@NotBlank
 	private int age;
 	
-	@NotBlank
+
 	private int nombre_media;
 	
 	public Long getId() {
