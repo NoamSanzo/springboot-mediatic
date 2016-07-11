@@ -19,16 +19,17 @@ angular.module('connexion')
     }
 
     service.login = function (username, password) {
-    	var myUrl  = 'http://192.168.10.12:8090/resource/connexion.login';
+    	//var myUrl  = 'http://192.168.10.12:8090/resource/connexion.login';
+    	var myUrl = 'localhost:8080/api/user/connexion.login';
     	console.log('on tente de se connecter', username, password);
     	
     	var promise = $http.post(myUrl, { login: username, mdp: password })
                .then(function(response) {
                		console.log(' success du post ' + response.data);
-  					return response.data;
+  					return response;
 				}, function(reason) {
                		console.log(' echec du post ' + reason.data);
-					return reason.data;
+					return reason;
 				});
 
         return promise;
