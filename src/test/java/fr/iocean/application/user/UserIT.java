@@ -64,20 +64,44 @@ public class UserIT extends IntegrationTest{
 		
 		
 	}
-//	@Test
-//	@WithMockUser
-//	public void testCreateForbidden() throws Exception{
-//			Media media = new Media();
-//			media.setTitre("titre");
-//			media.setType("type");
-//			media.setAuteur("auteur");
-//
-//		this.mockMvc.perform(post("/api/media").contentType(MediaType.APPLICATION_JSON)
-//		.content(jsonHelper.serialize(media)))
-//		.andDo(MockMvcResultHandlers.print())
-//		.andExpect(status().is(403));
-//
-//}
+	
+	@Test
+	@WithMockUser
+	public void testValidation()throws Exception{
+		//User with a blank login
+		User user1 = new User();
+		user1.setLogin("");
+		user1.setPassword("billy2");
+		user1.setName("billy2");
+		
+		this.mockMvc.perform(post("/api/user").contentType(MediaType.APPLICATION_JSON)
+				.content(jsonHelper.serialize(user1)))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status().is(400));
+		
+		//User with a blank password
+		User user2 = new User();
+		user2.setLogin("billy2");
+		user2.setPassword("");
+		user2.setName("billy2");
+		
+		this.mockMvc.perform(post("/api/user").contentType(MediaType.APPLICATION_JSON)
+				.content(jsonHelper.serialize(user2)))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status().is(400));
+		
+		//User with a blank name
+		User user3 = new User();
+		user3.setLogin("billy2");
+		user3.setPassword("billy2");
+		user3.setName("     ");
+		
+		this.mockMvc.perform(post("/api/user").contentType(MediaType.APPLICATION_JSON)
+				.content(jsonHelper.serialize(user3)))
+				.andDo(MockMvcResultHandlers.print())
+				.andExpect(status().is(400));
+		
+		
+	}
+
 }
-
-
