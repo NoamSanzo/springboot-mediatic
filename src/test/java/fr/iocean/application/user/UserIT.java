@@ -4,6 +4,8 @@
 package fr.iocean.application.user;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
@@ -57,10 +59,10 @@ public class UserIT extends IntegrationTest{
 		auth.add(authAdmin);
 		user.setAuthorizations(auth);
 		
-		this.mockMvc.perform(post("/api/user").contentType(MediaType.APPLICATION_JSON)
+		this.mockMvc.perform(get("/api/user/authorities").contentType(MediaType.APPLICATION_JSON)
 				.content(jsonHelper.serialize(user)))
 				.andDo(MockMvcResultHandlers.print())
-				.andExpect(status().is(201));
+				.andExpect(status().is(200));
 		
 		
 	}
