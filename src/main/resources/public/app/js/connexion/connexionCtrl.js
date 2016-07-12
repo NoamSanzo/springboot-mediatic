@@ -14,7 +14,7 @@ angular.module('connexion')
                 console.log(response);
                 if(response != null && response.status == 200){
                 	connexionService.setCredentials($scope.username, $scope.password);
-     			    $location.url('/recherche_media');
+     			    $location.path('/recherche_media');
                 }
                 else
                     alert("mauvais mot de passe ou login");

@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import fr.iocean.application.IoEntity;
 
 @Entity
-@Table(name= "Authorization")
+@Table(name= "authorization_")
 public class Authorization implements IoEntity{
 	
 	private static final long serialVersionUID = 1L;

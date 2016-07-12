@@ -23,7 +23,6 @@ import fr.iocean.application.authorization.Authorization;
 public class User implements IoEntity{
 	
 	@Id
-	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank

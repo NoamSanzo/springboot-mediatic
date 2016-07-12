@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('connexion')
-.factory('connexionService', function($rootScope, $http){
+.factory('connexionService', function($rootScope, $http, $cookieStore){
 
 	var service = {};
 
@@ -16,11 +16,11 @@ angular.module('connexion')
             };
 
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
+            $cookieStore.put('globals', $rootScope.globals);
     }
 
     service.login = function (username, password) {
-    	//var myUrl  = 'http://192.168.10.12:8090/resource/connexion.login';
-    	var myUrl = 'api/user/authorities';
+    	var myUrl = '/api/user/authorities';
     	console.log('on tente de se connecter', username, password);
     	
     	var config = {headers: {
@@ -39,19 +39,19 @@ angular.module('connexion')
         return promise;
     };
 
-    service.getDroitAcces = function(){
-        var myUrl = 'http://192.168.10.12:8090/resource/connexion.rights'
-        console.log('on tente de recuper les droits dacces');
-
-        var promise = $http.get(myUrl).then(function(response){
-            console.log('succès de la requete de droits dacces ' + response.data);
-            return response.data;
-        }, function(reason){
-            console.log('echec de la demande de droits dacces ' + reason.data);
-            return reason.data;
-        });
-        return promise;
-    }
+//    service.getDroitAcces = function(){
+//        var myUrl = 'http://192.168.10.12:8090/resource/connexion.rights'
+//        console.log('on tente de recuper les droits dacces');
+//
+//        var promise = $http.get(myUrl).then(function(response){
+//            console.log('succès de la requete de droits dacces ' + response.data);
+//            return response.data;
+//        }, function(reason){
+//            console.log('echec de la demande de droits dacces ' + reason.data);
+//            return reason.data;
+//        });
+//        return promise;
+//    }
     
     return service;
 });
