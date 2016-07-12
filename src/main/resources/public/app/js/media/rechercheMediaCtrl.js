@@ -1,7 +1,7 @@
 angular
 	.module('rechercheMedia')
 	.controller('rechercheMediaCtrl', function($scope, $http ,MediaService,$location, connexionService){
-		var url = 'http://192.168.10.27:8090/resource/media.recherche';
+		var url = 'http://localhost:8080/api/media';
 		
 		var promesse = MediaService.getListMedia();
 		promesse.then(function(param){

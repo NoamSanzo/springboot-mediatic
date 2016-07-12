@@ -3,7 +3,7 @@ angular
 	.controller('DetailsMediaCtrl', function($scope, $route, DetailsMediaServices, $location, AdherentService, EmpruntServices){
 		
 		DetailsMediaServices.getDetailsMedia().then(function(param){
-			//ici param == resultat.data
+			console.log('le media trouvé : ' + param);
 			$scope.media = param;
 		});		
 		
@@ -17,6 +17,7 @@ angular
 		$scope.modify = function (){
 			DetailsMediaServices.modifyDetailsMedia($scope.media).then(function(param){
 				$scope.media = param;
+				$route.reload();
 			});
 		};
 		

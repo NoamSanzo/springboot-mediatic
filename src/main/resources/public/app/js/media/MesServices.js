@@ -6,7 +6,7 @@ angular
 		MediaService.media = [];
 	
 	MediaService.getListMedia=function(){
-		var url = 'http://192.168.10.12:8090/resource/media.recherche';
+		var url = 'http://localhost:8080/api/media';
 		var promise= $http.get(url).then(function(response){
 			return response.data;
 		},function(){
@@ -19,7 +19,7 @@ angular
 	}
 	
 	MediaService.getMedia=function(id){
-		var url ='http://192.168.10.12:8090/resource/media.recherche'
+		var url ='http://localhost:8080/api/media'
 			return get(url);
 	}
 	
@@ -42,7 +42,7 @@ angular
 	AdherentService.adherent = [];
 	
 	AdherentService.getListAdherent=function(){
-		var url = 'http://192.168.10.12:8090/resource/adherent.recherche';
+		var url = 'http://localhost:8080/api/adherent';
 		var promise= $http.get(url).then(function(response){
 			return response.data;
 		},function(){
@@ -55,7 +55,7 @@ angular
 	}
 	
 	AdherentService.getAdherent=function(id){
-		var url ='http://192.168.10.12:8090/resource/adherent.recherche'
+		var url ='http://localhost:8080/api/adherent'
 			return get(url);
 	}
 	

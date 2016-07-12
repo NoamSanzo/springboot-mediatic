@@ -19,16 +19,16 @@ public class Media implements IoEntity{
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	public Long id;
+	private Long id;
 	
 	@NotBlank
-	public String titre;
+	private String titre;
 	
 	@NotBlank
-	public String type;
+	private String type;
 	
 	@NotBlank
-	public String auteur;
+	private String auteur;
 
 	@Override
 	public Long getId() {

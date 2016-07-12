@@ -6,15 +6,9 @@ angular
 		
 			modifyMedia = function (toModify){
 				var ref = $routeParams.ref;
-				var modifyUrl = 'http://192.168.10.12:8090/resource/media.modification';
-				return $http.post(modifyUrl, toModify, {
-					params: {
-						id:ref
-						}
-					})
+				var modifyUrl = 'http://localhost:8080/api/media/'+ref;
+				return $http.put(modifyUrl, toModify)
 				.then(function(response) {
-					console.log("Ca marche !");
-					console.log(response.data);
 					return response.data;
 				},
 				function(response) {
@@ -30,12 +24,8 @@ angular
 			
 			DetailsMediaServices.getDetailsMedia = function(){
 				var ref = $routeParams.ref;
-				var myUrl = 'http://192.168.10.12:8090/resource/media.accession';
-				var promise = $http.get(myUrl, {
-						params: {
-							id:ref
-							}
-						})
+				var myUrl = 'http://localhost:8080/api/media/'+ref;
+				var promise = $http.get(myUrl)
 						.then(function(response){
 							console.log(response.data);
 							return response.data;
