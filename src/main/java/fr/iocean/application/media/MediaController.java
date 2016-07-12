@@ -22,7 +22,6 @@ public class MediaController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Media findOne(@PathVariable Long id) {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!id = " + id);
 		return mediaService.findOne(id);
 	}
 

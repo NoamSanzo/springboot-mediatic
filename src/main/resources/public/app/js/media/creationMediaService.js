@@ -2,7 +2,7 @@ angular
 	.module('creationMedia')
 	.factory('creationMediaService', function($http){
 		
-		var url = 'http://192.168.10.12:8090/resource/media.creation';
+		var url = 'http://localhost:8080/api/media';
 		var service = {};
 		service.ajoutMedia = function (toAdd){
 			$http.post(url, toAdd).

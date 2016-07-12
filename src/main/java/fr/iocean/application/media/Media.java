@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -12,7 +11,6 @@ import fr.iocean.application.IoEntity;
 
 
 @Entity
-@Table
 public class Media implements IoEntity{
 	
 	private static final long serialVersionUID = 1L;

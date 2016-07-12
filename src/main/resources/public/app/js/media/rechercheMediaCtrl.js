@@ -72,23 +72,24 @@ angular
 		}
 
 		$scope.nouveauMedia = function(){
-			var promise = connexionService.getDroitAcces();
-			promise.then(function(data){
-				console.log('valeur renvoyée par la requete de droit dacces ' + data);
-				if(data !=null && data!=undefined){
-					if(data.includes('creation-media')){
-						$location.url('/creation_media');
-					}
-					else{
-						alert('Vous n\'avez pas les droits pour créer un média');
-					}
-				}
-				else
-				{
-					alert('Impossible de vérifier vos droits d\accès');
-				}
-				
-			})
+//			var promise = connexionService.getDroitAcces();
+//			promise.then(function(data){
+//				console.log('valeur renvoyée par la requete de droit dacces ' + data);
+//				if(data !=null && data!=undefined){
+//					if(data.includes('creation-media')){
+//						$location.path('/creation_media');
+//					}
+//					else{
+//						alert('Vous n\'avez pas les droits pour créer un média');
+//					}
+//				}
+//				else
+//				{
+//					alert('Impossible de vérifier vos droits d\accès');
+//				}
+//				
+//			})
+			$location.path('/creation_media');
 		}
 	}
 );
