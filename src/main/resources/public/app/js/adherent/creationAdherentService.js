@@ -2,7 +2,7 @@ angular
 	.module('creationAdherent')
 	.factory('creationAdherentService', function ($http) {
 	
-		var url = 'http://192.168.10.12:8090/resource/adherent.creation';
+		var url = 'http://localhost:8080/api/adherent';
 		var service = {};
 		service.ajoutAdherent = function (toAdd){
 		console.log(toAdd);

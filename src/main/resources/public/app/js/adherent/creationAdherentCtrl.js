@@ -1,22 +1,22 @@
 angular
 	.module('creationAdherent')
 	.controller('creationAdherentCtrl', function($scope, $filter, creationAdherentService, $location){
-		var ligne1 = "";
+		//var ligne1 = 'http://localhost:8080/api/adherent';
 		$scope.adherents = [
-		                    {
-			item : {
-				id : '',
-				nom : '', 
-				prenom : '', 
-				date_naissance : '',
-				email : '',
-				adresse : {ligne1 : ligne1, ligne2 : '', codepostal : '', ville : ''},
-				cotisation : {debut : '', fin : '', montant : ''},
-				age : '',
-				nombre_media : '0',	
-				emprunt : []	
-			}
-		}
+//		                    {
+//			item : {
+//				id : '',
+//				nom : '', 
+//				prenom : '', 
+//				date_naissance : '',
+//				email : '',
+//				adresse : {ligne1 : ligne1, ligne2 : '', codepostal : '', ville : ''},
+//				cotisation : {debut : '', fin : '', montant : ''},
+//				age : '',
+//				nombre_media : '0',	
+//				emprunt : []	
+//			}
+//		}
 		                 ];
 		
 		$scope.getNom = function (adherents){

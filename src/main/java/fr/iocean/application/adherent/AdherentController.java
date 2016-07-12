@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,14 +40,17 @@ public class AdherentController {
 		return adherentService.findAll();
 	}
 
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(method = RequestMethod.POST)
-	public void create(@RequestBody @Valid Adherent resource) {
+	public void create(@RequestBody @Valid Adherent resource, BindingResult result) {
+		if (result.hasErrors()) {
+			return;
+		}
 		adherentService.create(resource);
 	}
 	
-	@PreAuthorize("hasAuthority('ADMIN')")
+	//@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "{id}",method = RequestMethod.PUT)
 	public Adherent update(@RequestBody @Valid Adherent resource,@PathVariable Long id){
 		return adherentService.update(resource);

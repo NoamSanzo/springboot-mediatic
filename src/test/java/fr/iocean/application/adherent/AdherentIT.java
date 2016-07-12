@@ -35,7 +35,12 @@ public class AdherentIT extends IntegrationTest{
 		Adherent adherent = new Adherent();
 		adherent.setNom("nom");
 		adherent.setPrenom("prenom");
-		adherent.setAdresse("adresse");
+		Adresse addr = new Adresse();
+		addr.setCodepostal("33000");
+		addr.setLigne1("29 rue louis mie");
+		addr.setLigne2("Res fontaine st genes");
+		addr.setVille("Bordeaux");
+		adherent.setAdresse(addr);
 		Cotisation c = new Cotisation();
 		c.setDebut(formatter.parse("2016-01-01"));
 		c.setFin(formatter.parse("2017-01-01"));
@@ -63,7 +68,12 @@ public class AdherentIT extends IntegrationTest{
 			Adherent adherent = new Adherent();
 			adherent.setNom("nom");
 			adherent.setPrenom("prenom");
-			adherent.setAdresse("adresse");
+			Adresse addr = new Adresse();
+			addr.setCodepostal("33000");
+			addr.setLigne1("29 rue louis mie");
+			addr.setLigne2("Res fontaine st genes");
+			addr.setVille("Bordeaux");
+			adherent.setAdresse(addr);
 			Cotisation c = new Cotisation();
 			c.setDebut(formatter.parse("2016-01-01"));
 			c.setFin(formatter.parse("2017-01-01"));

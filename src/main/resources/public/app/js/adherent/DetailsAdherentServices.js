@@ -5,13 +5,10 @@ angular
 		var DetailsAdherentServices = {};
 
 			modifyAdherent = function (toModify){
-				var modifyUrl = 'http://192.168.10.12:8090/resource/adherent.modification';
 				var ref = $routeParams.ref;
-				return $http.post(modifyUrl, toModify/*, {
-					params: {
-						id:ref
-						}
-					}*/)
+				var modifyUrl ='http://localhost:8080/api/adherent/'+ref;
+				
+				return $http.put(modifyUrl, toModify)
 				.then(function(response) {
 					console.log("Ca marche !");
 					console.log(response.data);
@@ -29,12 +26,8 @@ angular
 			
 			DetailsAdherentServices.getDetailsAdherent = function(){
 						var ref = $routeParams.ref;
-						var myUrl = 'http://192.168.10.12:8090/resource/adherent.accession';
-						var promise = $http.get(myUrl, {
-							params : {
-								id : ref
-							}
-						}).then(function(response) {
+						var myUrl = 'http://localhost:8080/api/adherent/'+ref;
+						var promise = $http.get(myUrl).then(function(response) {
 							console.log(response.data);
 							return response.data;
 						}, function(response) {

@@ -38,13 +38,16 @@ public class Adherent implements IoEntity{
 	@NotBlank
 	private String email;
 	
-	@NotBlank
-	private String adresse;
+	@NotNull
+	@Embedded
+	@Valid
+	private Adresse adresse;
 	
 	@NotNull
 	@Valid
 	@Embedded
 	private Cotisation cotisation;
+	
 	
 	private int age;
 	
@@ -81,10 +84,10 @@ public class Adherent implements IoEntity{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getAdresse() {
+	public Adresse getAdresse() {
 		return adresse;
 	}
-	public void setAdresse(String adresse) {
+	public void setAdresse(Adresse	 adresse) {
 		this.adresse = adresse;
 	}
 	public Cotisation getCotisation() {

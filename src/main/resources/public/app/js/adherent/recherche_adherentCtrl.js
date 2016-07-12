@@ -1,7 +1,7 @@
 angular
 	.module('rechercheAdherent')
 	.controller('rechercheAdherentCtrl', function($scope, $http, AdherentService, $location, connexionService){
-		var url = 'http://192.168.10.27:8090/resource/adherent.recherche';
+		var url = 'http://localhost:8080/api/adherent';
 		
 		var promesse = AdherentService.getListAdherent();
 		promesse.then(function(param){
@@ -64,23 +64,25 @@ angular
 		}
 
 		  $scope.nouvelAdherent = function(){
-			var promise = connexionService.getDroitAcces();
-			promise.then(function(data){
-				console.log('valeur renvoyée par la requete de droit dacces ' + data);
-				if(data !=null && data!=undefined){
-					if(data.includes('creation-adherent')){
-						$location.url('/creation_adherent');
-					}
-					else{
-						alert('Vous n\'avez pas les droits pour créer un nouvel adherent');
-					}
-				}
-				else
-				{
-					alert('Impossible de vérifier vos droits d\accès');
-				}
-				
-			})
+//			var promise = connexionService.getDroitAcces();
+//			promise.then(function(data){
+//				console.log('valeur renvoyée par la requete de droit dacces ' + data);
+//				if(data !=null && data!=undefined){
+//					if(data.includes('creation-adherent')){
+//						$location.url('/creation_adherent');
+//					}
+//					else{
+//						alert('Vous n\'avez pas les droits pour créer un nouvel adherent');
+//					}
+//				}
+//				else
+//				{
+//					alert('Impossible de vérifier vos droits d\accès');
+//				}
+//				
+//			})
+			  
+			  $location.url('/creation_adherent');
 		}
 
 	});
