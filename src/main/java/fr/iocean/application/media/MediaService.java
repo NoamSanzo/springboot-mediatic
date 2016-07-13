@@ -29,4 +29,8 @@ public class MediaService {
 		}
 		return null;
 	}
+	
+	List<Media> search(String titre, String type, String auteur){
+		return mediaRepo.search(titre, type, auteur);
+	}
 }

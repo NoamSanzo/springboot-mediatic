@@ -28,26 +28,42 @@ angular
 
 		$scope.filtreMedia = {};
 
+//		$scope.rechercher = function(){
+//			if($scope.mediaAChercher != undefined && $scope.mediaAChercher != null){
+//				$scope.filtreMedia.titre = $scope.mediaAChercher;
+//			}
+//
+//			if($scope.typeAChercher != undefined && $scope.typeAChercher != null){
+//				$scope.filtreMedia.type = $scope.typeAChercher.Name;
+//			}
+//
+//			if($scope.auteurAChercher != undefined && $scope.auteurAChercher != null){
+//				$scope.filtreMedia.auteur = $scope.auteurAChercher;
+//			}
+//
+//			console.log($scope.filtreMedia);
+//		}
+
 		$scope.rechercher = function(){
-			if($scope.mediaAChercher != undefined && $scope.mediaAChercher != null){
-				$scope.filtreMedia.titre = $scope.mediaAChercher;
-			}
-
-			if($scope.typeAChercher != undefined && $scope.typeAChercher != null){
-				$scope.filtreMedia.type = $scope.typeAChercher.Name;
-			}
-
-			if($scope.auteurAChercher != undefined && $scope.auteurAChercher != null){
-				$scope.filtreMedia.auteur = $scope.auteurAChercher;
-			}
-
-			console.log($scope.filtreMedia);
+			var promesse = MediaService.search($scope.mediaAChercher, $scope.typeAChercher, $scope.auteurAChercher);
+			promesse.then(function(param){
+				console.log(param);
+				$scope.ListMedia=param;
+			});
 		}
-
+		
 		$scope.clearRecherche = function(){
 			$scope.filtreMedia.titre = '';
+			$scope.mediaAChercher = '';
 			$scope.filtreMedia.type = '';
+			$scope.typeAChercher = '';
 			$scope.filtreMedia.auteur = '';
+			$scope.auteurAChercher = '';
+			promesse.then(function(param){
+				console.log(param);
+				$scope.ListMedia=param;
+				
+			});
 		}
 
 		$scope.triePar = 'titre';
